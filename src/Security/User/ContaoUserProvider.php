@@ -69,7 +69,7 @@ class ContaoUserProvider implements UserProviderInterface
         }
 
         // Try to find a FrontendUser. Needed for Services like RememberMe
-        if($this->isFrontendScope() && FrontendUser::getInstance()->findBy('username', $username)){
+        if($this->container->isScopeActive(ContaoCoreBundle::SCOPE_FRONTEND) && FrontendUser::getInstance()->findBy('username', $username)){
             return FrontendUser::getInstance();
         }
 
